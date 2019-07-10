@@ -1,20 +1,14 @@
-header.header-wrapper {
-  background-color: transparent;
-}
-header.header-wrapper {
+header#header-wrapper {
   position: fixed;
   width: 100%;
   min-height: 5rem;
-  background-color: #004393;
+  /* background-color: #004393; */
+  background-color: transparent;
   z-index: 999;
   transition: all 0.5s ease-in-out;
   padding-bottom: 1.5rem;
   height: 128px;
 }
-.header.header-wrapper {
-  background-color: transparent;
-}
-
 .img-nav {
   position: absolute;
   width: 100%;
@@ -104,7 +98,7 @@ header.header-wrapper {
 li.nav-item {
   color: white;
   font-family: "Sarabun", sans-serif;
-  font-size: 15px;
+  font-size: 100%;
 }
 span {
   font-size: 1rem;
@@ -134,11 +128,12 @@ span {
   width: 100%;
   color: white;
   margin-bottom: 7rem;
+  height: 537px;
 }
 /* Carousel  */
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 460px;
+  height: 551px;
   line-height: 460px;
   background: #364d79;
   overflow: hidden;
@@ -148,6 +143,80 @@ span {
   color: #fff;
 }
 img {
+  /* display: flex; */
   max-width: 100%;
   height: auto;
+  /* flex-direction: column; */
+  /* clip-path: polygon(0 14%, 100% 14%, 100% 100%, 0% 100%); */
+}
+.img-slide {
+  width: 100%;
+  margin-top: -82px;
+  position: relative;
+}
+.video-button-css {
+  margin-top: -276px;
+  margin-left: 601px;
+}
+.video-css {
+  position: absolute;
+  border-radius: 1rem 1rem 0 0;
+}
+.bg-button-video {
+  font-family: "Sarabun", sans-serif;
+  background: #00c2d5;
+  padding: 30px;
+  margin-top: 342px;
+  position: absolute;
+  border-radius: 0 0 1rem 1rem;
+  width: 616px;
+  height: 60px;
+}
+.bg-button-video .font-center {
+  margin-top: -12px;
+  font-size: 1rem;
+  color: white;
+}
+
+.second-section-Container {
+  width: 100%;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: block;
+}
+
+.highlight-text {
+  font-family: "Sarabun", sans-serif;
+  color: black;
+  width: 87.5%;
+  max-width: 72rem;
+  margin: auto;
+  font-size: 2.5rem;
+}
+.card-slick {
+  outline: none;
+  width: 150px;
+  text-align: center;
+  font-family: "Sarabun", sans-serif;
+  font-size: 100%;
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+.slick-next:before, .slick-prev:before{
+  font-size: 51px;
+    line-height: 0;
+    opacity: 1;
+    color: #fff;
+    z-index: 99;
+}
+.slick-prev {
+  left: -10px;
+  z-index: 99;
+}
+.slick-next {
+  right: 45px;
+  z-index: 99;
+}
+.card-img-slick{
+  border-radius: 1rem 1rem 0rem 0rem;
 }
