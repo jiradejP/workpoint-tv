@@ -1,13 +1,67 @@
 header#header-wrapper {
   position: fixed;
-  width: 100%;
+  width: 1366px;
   min-height: 5rem;
   /* background-color: #004393; */
   background-color: transparent;
   z-index: 999;
-  transition: all 0.5s ease-in-out;
+  transition: background-color 1s ease 0s;
   padding-bottom: 1.5rem;
   height: 128px;
+}
+.ant-layout {
+  background: white;
+}
+/* .nav-container {
+  transition: background-color 0.2s linear;
+}
+.nav-container.solid-nav {
+  background-color: #aaa;
+  transition: background-color 0.2s linear;
+} */
+
+/* .drawer-content-wrapper {
+  width: 320px;
+} */
+.ant-drawer-content {
+  background-color: #0a2c56;
+}
+.ant-drawer-close {
+  color: white;
+  width: 150px;
+  height: 150px;
+  font-size: 22px;
+}
+.ant-drawer-close:focus,
+.ant-drawer-close:hover {
+  color: white;
+  text-decoration: none;
+}
+.img-nav-logo {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.side-drawer {
+  width: 78.5%;
+  padding-top: 146px;
+  margin-left: 21px;
+}
+.list-side-drawer-detail {
+  padding-top: 13px;
+}
+.list-side-drawer-detail a {
+  color: white;
+}
+.list-side-drawer-detail a:hover {
+  text-decoration: underline;
+}
+.list-side-drawer {
+  font-size: 1rem;
+  font-family: "Sarabun", sans-serif;
+  color: white;
+  padding-top: 37px;
 }
 .img-nav {
   position: absolute;
@@ -17,7 +71,7 @@ header#header-wrapper {
   left: 0;
 }
 .header-nav {
-  margin-top: -13px;
+  /* margin-top: -13px; */
   position: relative;
 }
 .logo-nav {
@@ -30,7 +84,7 @@ header#header-wrapper {
 }
 .nav-container {
   width: 87.5%;
-  max-width: 72rem;
+  /* max-width: 72rem; */
   margin: auto;
 }
 .logo-container {
@@ -51,6 +105,7 @@ header#header-wrapper {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  padding-top: 36px;
 }
 .nav-container-wrapper {
   margin-top: -1rem;
@@ -193,6 +248,7 @@ img {
   max-width: 72rem;
   margin: auto;
   font-size: 2.5rem;
+  height: 478px;
 }
 .card-slick {
   outline: none;
@@ -202,12 +258,13 @@ img {
   font-size: 100%;
   border-radius: 1rem 1rem 1rem 1rem;
 }
-.slick-next:before, .slick-prev:before{
+.slick-next:before,
+.slick-prev:before {
   font-size: 51px;
-    line-height: 0;
-    opacity: 1;
-    color: #fff;
-    z-index: 99;
+  line-height: 0;
+  opacity: 1;
+  color: #fff;
+  z-index: 99;
 }
 .slick-prev {
   left: -10px;
@@ -217,6 +274,197 @@ img {
   right: 45px;
   z-index: 99;
 }
-.card-img-slick{
+.ant-card-cover img {
   border-radius: 1rem 1rem 0rem 0rem;
+}
+.third-section-Container {
+  width: 100%;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  display: block;
+}
+.last-video-css {
+  position: absolute;
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+.text-last-video {
+  font-size: 2.5rem;
+}
+/*  Load more */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.load-more-button {
+  width: 100%;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-family: "Sarabun", sans-serif;
+  /* line-height: 4rem; */
+  display: block;
+  /* padding-bottom: 16px;
+  margin-top: 56px; */
+  padding-bottom: 20px;
+}
+.load-more-video {
+  /* padding-bottom: 30px; */
+  height: 250px;
+}
+.load-more-video-detail {
+  padding-bottom: 10px;
+  /* border-radius: 1rem 1rem 1rem 1rem; */
+}
+.text-load-more-video {
+  color: #6c757d;
+  font-family: "Sarabun", sans-serif;
+}
+.cleverse-rounded {
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+.load-more-container {
+  width: 87.5%;
+  max-width: 72rem;
+  margin: auto;
+}
+.load-more-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+.load-more-container ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.load-more-container ul li {
+  width: calc(25% - 10px);
+  margin: 10px 5px 0;
+  height: 100%;
+  /* height: 156px; */
+  /* background: #446CB3; */
+  color: #fff;
+  float: left;
+  border-radius: 2px;
+}
+.load-more-container ul li:nth-child(1n + 5) {
+  max-height: 0;
+  opacity: 0;
+  transition: 0.1s ease-in;
+}
+.load-more-container .load-more-btn {
+  width: 150px;
+  /* line-height: 40px; */
+  position: relative;
+  border-radius: 2px;
+  margin: 0 auto;
+  /* display: block; */
+  /* background: #219150; */
+  color: #0056b3;
+  cursor: pointer;
+  text-align: center;
+}
+.load-more-container .load-more-btn:hover {
+  text-decoration: underline;
+}
+.icon-unloaded:hover {
+  color: #002750;
+}
+.load-more-container .load-more-btn .loaded {
+  display: none;
+}
+.load-more-container #load-more {
+  display: none;
+}
+.load-more-container #load-more:checked ~ ul li:nth-child(1n + 5) {
+  max-height: 999px;
+  opacity: 1;
+  transition: 0.2s ease-in;
+}
+.load-more-container #load-more:checked ~ .load-more-btn .loaded {
+  display: block;
+}
+.load-more-container #load-more:checked ~ .load-more-btn .unloaded {
+  display: none;
+}
+
+.foth-section-Container {
+  background-image: url("https://www.workpointtv.com/wp-content/themes/wptv/assets/banner-bg.png");
+  position: relative;
+  display: flex;
+  /* width: 100%; */
+  overflow: hidden;
+  height: 481px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  max-width: 100%;
+}
+.suggestion-video-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: block;
+  z-index: 2;
+  width: 87.5%;
+  max-width: 72rem;
+  margin: auto;
+}
+.row-suggrestion {
+  font-family: "Sarabun", sans-serif;
+  padding-left: 4px;
+  padding-right: 18px;
+}
+.text-suggestion {
+  color: white;
+}
+.text-suggestion-h5 {
+  font-size: 1.2rem;
+}
+.text-suggestion-h1 {
+  font-size: 2.74rem;
+}
+.text-suggestion-h5-2 {
+  font-size: 1rem;
+}
+.col-1-suggestion {
+  padding-top: 43px;
+}
+/* .col-2-suggestion{
+  border-radius: 1rem 1rem 1rem 1rem;
+} */
+.col-2-suggestion-video {
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+.fifth-section-Container {
+  width: 100%;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: block;
+}
+.fifth-div {
+  width: 87.5%;
+  max-width: 72rem;
+  margin: auto;
+}
+.last-song {
+  font-family: "Sarabun", sans-serif;
+  color: black;
+  max-width: 72rem;
+  margin: auto;
+  font-size: 2.5rem;
+  height: 478px;
+}
+.sixth-section-Container {
+  width: 100%;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: block;
+}
+
+.sixth-div {
+  width: 87.5%;
+  max-width: 72rem;
+  margin: auto;
 }
