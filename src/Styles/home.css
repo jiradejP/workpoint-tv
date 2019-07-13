@@ -2,8 +2,6 @@ header#header-wrapper {
   position: fixed;
   width: 1366px;
   min-height: 5rem;
-  /* background-color: #004393; */
-  background-color: transparent;
   z-index: 999;
   transition: background-color 1s ease 0s;
   padding-bottom: 1.5rem;
@@ -12,17 +10,6 @@ header#header-wrapper {
 .ant-layout {
   background: white;
 }
-/* .nav-container {
-  transition: background-color 0.2s linear;
-}
-.nav-container.solid-nav {
-  background-color: #aaa;
-  transition: background-color 0.2s linear;
-} */
-
-/* .drawer-content-wrapper {
-  width: 320px;
-} */
 .ant-drawer-content {
   background-color: #0a2c56;
 }
@@ -86,7 +73,9 @@ header#header-wrapper {
   width: 87.5%;
   /* max-width: 72rem; */
   margin: auto;
+  /* transparent */
 }
+
 .logo-container {
   max-width: 15rem;
   position: relative;
@@ -210,8 +199,9 @@ img {
   position: relative;
 }
 .video-button-css {
-  margin-top: -276px;
-  margin-left: 601px;
+  z-index: 999;
+  /* margin-top: -276px;
+  margin-left: 601px; */
 }
 .video-css {
   position: absolute;
@@ -221,18 +211,25 @@ img {
   font-family: "Sarabun", sans-serif;
   background: #00c2d5;
   padding: 30px;
-  margin-top: 342px;
+  /* margin-top: 342px; */
   position: absolute;
   border-radius: 0 0 1rem 1rem;
-  width: 616px;
-  height: 60px;
+  /* width: 616px;
+  height: 60px; */
 }
 .bg-button-video .font-center {
   margin-top: -12px;
   font-size: 1rem;
   color: white;
 }
-
+.ant-affix {
+  z-index: 999;
+  position: absolute;
+}
+.button-affix-video {
+  bottom: 18px;
+  left: 461px;
+}
 .second-section-Container {
   width: 100%;
   position: relative;
@@ -453,12 +450,13 @@ img {
   max-width: 72rem;
   margin: auto;
   font-size: 2.5rem;
-  height: 478px;
+  padding-bottom: 40px;
+  /* height: 478px; */
 }
 .sixth-section-Container {
   width: 100%;
   position: relative;
-  padding-top: 2rem;
+  padding-top: 0rem;
   padding-bottom: 2rem;
   display: block;
 }
@@ -467,4 +465,145 @@ img {
   width: 87.5%;
   max-width: 72rem;
   margin: auto;
+}
+/* slick 1 */
+.video-slick-last-song {
+  padding-top: 56.5%;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.video-slick-last-song img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  object-position: center center;
+}
+.video-slick-last-song .btn-play1 {
+  width: 100%;
+  max-width: 3rem;
+  height: 3rem;
+  position: absolute;
+  /* margin-top: auto; */
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.description-video-slick {
+  width: 90%;
+}
+div.last-song-slick button.slick-next button.slick-prev {
+  top: 40%;
+}
+/* .last-song-slick .slick-arrow .slick-prev{
+  top: 40%;
+} */
+.entertainment-news {
+  font-family: "Sarabun", sans-serif;
+  color: black;
+  max-width: 72rem;
+  margin: auto;
+  font-size: 2.5rem;
+  padding-bottom: 40px;
+}
+.footer-end {
+  background-color: #004393;
+  width: 100%;
+  line-height: 1rem;
+  height: 259px;
+  padding-top: 40px;
+}
+.footer-contant-end {
+  /* width: 87.5%; */
+  max-width: 72rem;
+  margin: auto;
+}
+.footer-first {
+  padding-top: 78px;
+}
+.ul-list-footer {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.text-footer {
+  color: white;
+  font-family: "Sarabun", sans-serif;
+  opacity: 0.7;
+}
+h3.text-footer {
+  color: whitesmoke;
+  opacity: 0.7;
+}
+.fa {
+  /* padding: 20px; */
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+.download-application-footer {
+  padding-top: 46px;
+}
+.download-application {
+  padding-top: 10px;
+}
+.icon-footer {
+  padding-top: 10px;
+}
+.edit-text-footer-third {
+  font-family: "Sarabun", sans-serif;
+  color: white;
+}
+.one {
+  font-size: 1.2rem;
+}
+.two {
+  font-size: 2rem;
+}
+.text-copyright {
+  line-height: 0.2rem;
+  opacity: 0.4;
+  color: white;
+  font-size: 0.95rem;
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-container{
+    max-width: 64rem;
+  }
+  .nav nav-container-wrapper nav-container{
+    display: none;
+  }
 }

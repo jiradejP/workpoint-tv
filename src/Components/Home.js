@@ -10,36 +10,84 @@ import {
   Card,
   Row,
   Col,
-  Drawer
+  Drawer,
+  Affix,
+  Button
 } from "antd";
 const { Header, Footer, Content } = Layout;
 
 /* eslint-disable import/first */
 import Slider from "react-slick";
-// import jQuery from 'jquery'
+// import $ from "jquery";
 
 class Home extends Component {
-  state = {
-    display: true,
-    width: 71.5,
-    visible: false,
-    zIndexDrawer: -1
-  };
-  // componentDidMount() {
-  //   const $ = window.$;
-  //   jQuery(function() {
-  //     jQuery(window).scroll(function() {
-  //         var height = jQuery('.first-container').height();
-  //         var scrollTop = jQuery(window).scrollTop();
-  //         if (scrollTop >= height - 40) {
-  //           jQuery('.nav-container').addClass('solid-nav');
-  //         } else {
-  //           jQuery('.nav-container').removeClass('solid-nav');
-  //         }
+  constructor() {
+    super();
+    this.state = {
+      display: true,
+      width: 71.5,
+      visible: false,
+      zIndexDrawer: -1,
+      bgColor: "transparent",
+      videoPosition: "absolute !important",
+      videoWidth: 616,
+      videoHeight: 342,
+      videoLeft: 601,
+      videoTop: -276,
+      buttonVideoWidth: 616,
+      buttonVideoHeight: 60,
+      buttonVideoTop: 342,
+      closeButtonDisplay: "none",
+      isClose: "block"
+    };
+  }
 
-  //     });
-  // });
-  // }
+  componentDidMount() {
+    window.addEventListener("scroll", this.listenScrollEvent);
+    window.addEventListener("scroll", this.videoScrollDownEvent);
+  }
+
+  listenScrollEvent = e => {
+    if (window.scrollY > 1) {
+      this.setState({ bgColor: "#004393" });
+    } else {
+      this.setState({ bgColor: "transparent" });
+    }
+  };
+  closeVideo = () => {
+    this.setState({
+      isClose: "none"
+    });
+  };
+  videoScrollDownEvent = e => {
+    if (window.scrollY >= 400 && this.state.isClose === "block") {
+      this.setState({
+        videoWidth: 479,
+        videoHeight: 267,
+        videoLeft: 836,
+        videoTop: -170,
+        videoPosition: "fixed",
+        buttonVideoWidth: 479,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 267,
+        closeButtonDisplay: "block"
+      });
+    } else if (window.scrollY < 400) {
+      this.setState({
+        videoWidth: 616,
+        videoHeight: 342,
+        videoLeft: 601,
+        videoTop: -276,
+        buttonVideoWidth: 616,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 342,
+        videoPosition: "absolute !important",
+        closeButtonDisplay: "none",
+        isClose: "block"
+      });
+    }
+  };
+
   showDrawer = () => {
     this.setState({
       visible: true,
@@ -59,6 +107,7 @@ class Home extends Component {
     }
   };
   render() {
+    console.log(window.scrollY);
     const menu = (
       <Menu>
         <Menu.Item key="0">
@@ -100,6 +149,13 @@ class Home extends Component {
       slidesToShow: 4,
       slidesToScroll: 1,
       useCSS: true
+    };
+    const settingsSlider = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4
     };
     const { Meta } = Card;
     return (
@@ -151,7 +207,11 @@ class Home extends Component {
             </div>
           </div>
         </Drawer>
-        <Header id="header-wrapper" class="nav-container">
+        <Header
+          id="header-wrapper"
+          class="nav-container nav-container navbar "
+          style={{ backgroundColor: this.state.bgColor }}
+        >
           <img
             className="img-nav"
             src="https://www.workpointtv.com/wp-content/themes/wptv/assets/head-line.png"
@@ -234,23 +294,62 @@ class Home extends Component {
                 <img src="https://site-assets.mediaoxide.com/workpointtv/2019/06/21091307/3200x15001.jpg" />
               </div>
             </Carousel>
-            <div className="video-button-css">
-              <iframe
-                class="video-css"
-                width="616"
-                height="342"
-                src="https://www.youtube.com/embed/0cxA-LlQUDg"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              />
-              <div className="bg-button-video">
-                <a href="#">
-                  <center className="font-center">แสดงผังรายการ ></center>
-                </a>
+            <Affix
+              offsetTop="500"
+              className="ant-affix"
+              style={{
+                // position: 'absolute',
+                position: this.state.videoPosition,
+                display: this.state.isClose
+              }}
+            >
+              <div
+                className="video-button-css ant-affi"
+                style={{
+                  width: this.state.videoWidth,
+                  height: this.state.videoHeight,
+                  marginTop: this.state.videoTop,
+                  marginLeft: this.state.videoLeft,
+                  position: this.state.videoPosition
+                  // position: 'absolute'
+                }}
+              >
+                <iframe
+                  class="video-css"
+                  style={{
+                    width: this.state.videoWidth,
+                    height: this.state.videoHeight
+                  }}
+                  // width="616"
+                  // height="342"
+                  src="https://www.youtube.com/embed/0cxA-LlQUDg"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+                <div
+                  className="bg-button-video"
+                  style={{
+                    width: this.state.buttonVideoWidth,
+                    height: this.state.buttonVideoHeight,
+                    marginTop: this.state.buttonVideoTop
+                  }}
+                >
+                  <a>
+                    <center className="font-center">แสดงผังรายการ ></center>
+                  </a>
+                </div>
+                <Button
+                  className="button-affix-video"
+                  shape="circle"
+                  icon="close"
+                  style={{
+                    display: this.state.closeButtonDisplay
+                  }}
+                  onClick={this.closeVideo}
+                />
               </div>
-              {/* <div className="bg-button-video">hello</div> */}
-            </div>
+            </Affix>
           </section>
           <section className="second-section-Container">
             <div className="highlight-text">
@@ -617,16 +716,409 @@ class Home extends Component {
           <section className="fifth-section-Container">
             <div className="fifth-div">
               <h1 className="last-song">เพลงล่าสุด</h1>
+              <div className="last-song-slick">
+                <Slider {...settingsSlider}>
+                  <div>
+                    <div className="video-slick-last-song ">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26044811/2019-06-26_114654.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      เหงาจนเงาหนี – นัน อนันต์ [Official Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song ">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26041648/2019-06-26_111431.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      15 ที่ข้าแพ้ – เท่ง เถิดเทิง [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26033645/2019-06-26_103536.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      งึดหลาย – ก้อง ก้องสมุทร [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26033438/2019-06-26_103318.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      คิดถึงจนสับสน – ซัน วงศธร [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26033438/2019-06-26_103318.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      อย่าฟ้าวเมื่อยเด้อหล่า – เป้ วีระศักดิ์ [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26033119/2019-06-26_103003.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      ฮักเขาหลายกะไปสา – แจ็ค ชาลีนาง [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/05/30041808/jjjjjj2.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      หมดมุก – จ่อย รวมมิตร [Official MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/05/30041807/jjj2.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      อ้ายคนเก่าไปไส – แอน สุนิสา [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/05/30041805/aaa2.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      บ่ได้หลายใจแต่ฮักหลายคน – กบ สุพจน์ [Official MV]
+                    </p>
+                  </div>
+                </Slider>
+              </div>
             </div>
           </section>
-
           <section className="sixth-section-Container">
             <div className="sixth-div">
-              <h1>ข่าวบันเทิง</h1>
+              <h1 className="entertainment-news">ข่าวบันเทิง</h1>
+              <div className="last-song-slick">
+                <Slider {...settingsSlider}>
+                  <div>
+                    <div className="video-slick-last-song ">
+                      <a>
+                        <img
+                          class="cleverse-rounded"
+                          src="https://site-assets.mediaoxide.com/workpointnews/2019/07/12201627/1562937380_70309_2-1024x538.png"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      "อั้ม" เผยความรู้สึก หลังช่วยซื้อกระเป๋าแฟนคลับลูกป่วย
+                      รับเคยโดนหลอกเป็นล้านเพราะสงสาร​{" "}
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song ">
+                      <a>
+                        <img
+                          class="cleverse-rounded"
+                          src="https://site-assets.mediaoxide.com/workpointnews/2019/07/12155358/1562921630_13048_01-1024x538.png"
+                        />{" "}
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      4 โค้ชแร็ปเปอร์ ซุ่มซ้อมโชว์พิเศษ "YAMAHA Presents THE
+                      RAPPER ALL STAR CONCERT"
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded"
+                          src="https://site-assets.mediaoxide.com/workpointnews/2019/07/12145954/1562918387_81192_1-1024x538.png"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      "ดีเจแมน" โพสต์คลิปคนกระชากสร้อย ลั่นอยากต่อยคนแบบนี้ใน 10
+                      Fight 10 ซีซั่นหน้า{" "}
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded"
+                          src="https://site-assets.mediaoxide.com/workpointnews/2019/07/12160915/1562922551_95399_Untitled-5-1024x538.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      สายกินไม่ควรพลาด ! จัดอันดับ พ่อค้าแม่ค้าคนไหน
+                      เปิดร้านมานานที่สุด ?
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26033438/2019-06-26_103318.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      อย่าฟ้าวเมื่อยเด้อหล่า – เป้ วีระศักดิ์ [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/06/26033119/2019-06-26_103003.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      ฮักเขาหลายกะไปสา – แจ็ค ชาลีนาง [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/05/30041808/jjjjjj2.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      หมดมุก – จ่อย รวมมิตร [Official MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/05/30041807/jjj2.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      อ้ายคนเก่าไปไส – แอน สุนิสา [Lyrics MV]
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="video-slick-last-song">
+                      <a>
+                        <img
+                          class="cleverse-rounded "
+                          src="https://site-assets.mediaoxide.com/workpointtv/2019/05/30041805/aaa2.jpg"
+                        />
+                        <div class="btn-play1">
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/img/btn-play.png" />
+                        </div>
+                      </a>
+                    </div>
+                    <p className="description-video-slick">
+                      บ่ได้หลายใจแต่ฮักหลายคน – กบ สุพจน์ [Official MV]
+                    </p>
+                  </div>
+                </Slider>
+              </div>
             </div>
           </section>
         </Content>
-        <Footer>Footer</Footer>
+        <Footer className="footer-end">
+          <div className="footer-contant-end">
+            <Row>
+              <Col span={9}>
+                <div class="logo_container">
+                  <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/logo-wptv.png" />
+                </div>
+                <div className="footer-first">
+                  <ul className="ul-list-footer">
+                    <li>
+                      <a>
+                        <h3 className="text-footer">ข้อมูลบริษัท</h3>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <h3 className="text-footer">ติดต่อสอบถาม</h3>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <h3 className="text-footer">contant licensing</h3>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </Col>
+              <Col span={9}>
+                <div>
+                  <h3 className="text-footer">ติดตามเรา</h3>
+                  <div className="icon-footer">
+                    <Row>
+                      <Col span="3">
+                        <a class="fa fa-facebook" />
+                      </Col>
+                      <Col span="3">
+                        <a class="fa fa-twitter" />
+                      </Col>
+                      <Col span="3">
+                        <a class="fa fa-youtube" />
+                      </Col>
+                      <Col span="3">
+                        <a class="fa fa-instagram" />
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+                <div className="download-application-footer">
+                  <h3 className="text-footer">ดาวน์โหลดแอพพลิเคชัน</h3>
+                  <div className="download-application">
+                    <Row>
+                      <Col span="8">
+                        <a>
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/appstore.png" />
+                        </a>
+                      </Col>
+                      <Col span="12">
+                        <a>
+                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/playstore.png" />
+                        </a>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+              </Col>
+              <Col span={6}>
+                <div className="text-footer-third">
+                  <p className="edit-text-footer-third one">ติดต่อโฆษณา</p>
+                  <p className="edit-text-footer-third two">02-833-2000</p>
+                </div>
+                <div className="text-copyright">
+                  <p>COPYRIGHT © 2019</p>
+                  <p>THAI BROADCASTING COMPANY LIMITED</p>
+                  <p>ALL RIGHTS RESERVED.</p>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Footer>
       </Layout>
     );
   }
