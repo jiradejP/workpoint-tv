@@ -29,17 +29,191 @@ class Home extends Component {
       visible: false,
       zIndexDrawer: -1,
       bgColor: "transparent",
-      videoPosition: "absolute !important",
-      videoWidth: 616,
-      videoHeight: 342,
-      videoLeft: 601,
-      videoTop: -276,
-      buttonVideoWidth: 616,
-      buttonVideoHeight: 60,
-      buttonVideoTop: 342,
+      videoPosition: "absolute",
+      // 1920
+      videoWidth: "",
+      videoHeight: "",
+      videoTop: "",
+      videoLeft: "",
+      buttonVideoWidth: "",
+      buttonVideoHeight: "",
+      buttonVideoTop: "",
       closeButtonDisplay: "none",
-      isClose: "block"
+      isClose: "block",
+      settingsIpadPro: 4,
+      settingsSliderIpadPro: 4,
+      videoClass: "absolute"
     };
+  }
+
+  componentWillMount() {
+    window.addEventListener("scroll", this.videoScrollDownEvent);
+    if (window.screen.width >= 1920) {
+      if (window.scrollY >= 400 && this.state.isClose === "block") {
+        // 1920px
+        this.setState({
+          videoWidth: 479,
+          videoHeight: 267,
+          videoLeft: 1391,
+          videoTop: -56,
+          videoPosition: "fixed",
+          buttonVideoWidth: 479,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 267,
+          closeButtonDisplay: "block",
+          settingsIpadPro: 4,
+          isClose: "block"
+        });
+      } else if (window.scrollY < 400) {
+        this.setState({
+          videoWidth: 638,
+          videoHeight: 358,
+          videoTop: -341,
+          videoLeft: 864,
+          buttonVideoWidth: 638,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 358,
+          videoPosition: "absolute !important",
+          closeButtonDisplay: "none",
+          isClose: "block",
+          settingsIpadPro: 4
+        });
+      }
+    } else if (window.screen.width >= 1366) {
+      if (window.scrollY >= 400 && this.state.isClose === "block") {
+        // 1920px
+        this.setState({
+          videoPosition: "fixed",
+          videoWidth: 616,
+          videoHeight: 342,
+          videoLeft: 601,
+          videoTop: -276,
+          buttonVideoWidth: 616,
+          buttonVideoTop: 342,
+          // buttonVideoWidth: 479,
+          buttonVideoHeight: 60,
+          // buttonVideoTop: 267,
+          closeButtonDisplay: "block",
+          settingsIpadPro: 4
+        });
+      } else if (window.scrollY < 400) {
+        this.setState({
+          videoWidth: 607,
+          videoHeight: 341,
+          videoTop: -472,
+          videoLeft: 609,
+          buttonVideoWidth: 607,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 341,
+          videoPosition: "absolute",
+          closeButtonDisplay: "none",
+          isClose: "block",
+          settingsIpadPro: 4
+        });
+      }
+    } else if (window.screen.width >= 1280) {
+      if (window.scrollY >= 400 && this.state.isClose === "block") {
+        // 1280px
+        this.setState({
+          videoPosition: "fixed",
+          videoWidth: 479,
+          videoHeight: 269,
+          videoLeft: 751,
+          videoTop: -111,
+          buttonVideoWidth: 479,
+          buttonVideoTop: 269,
+          // buttonVideoWidth: 479,
+          buttonVideoHeight: 60,
+          // buttonVideoTop: 267,
+          closeButtonDisplay: "block",
+          settingsIpadPro: 4,
+          videoClass: "fixed"
+        });
+      } else if (window.scrollY < 400) {
+        this.setState({
+          videoWidth: 607,
+          videoHeight: 342,
+          videoTop: -498,
+          videoLeft: 568,
+          buttonVideoWidth: 607,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 341,
+          videoPosition: "absolute",
+          closeButtonDisplay: "none",
+          isClose: "block",
+          settingsIpadPro: 4,
+          videoClass: "absolute"
+        });
+      }
+    } else if (window.screen.width >= 1024) {
+      this.setState({
+        videoWidth: 607,
+        videoHeight: 342,
+        videoTop: -498,
+        videoLeft: 568,
+        buttonVideoWidth: 607,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 341,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 3,
+        width: 55.5,
+        videoPosition: "absolute"
+      });
+    } else if (window.screen.width >= 768) {
+      this.setState({
+        videoWidth: 607,
+        videoHeight: 342,
+        videoTop: -498,
+        videoLeft: 200,
+        buttonVideoWidth: 607,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 341,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 3,
+        width: 41.5,
+        videoPosition: "absolute"
+      });
+    } else if(window.screen.width >= 414) {
+    //   width: 385px;
+    // height: 242px;
+      this.setState({
+        videoWidth: 385,
+        videoHeight: 242,
+        videoTop: -498,
+        videoLeft: 200,
+        buttonVideoWidth: 385,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 18.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    } else if(window.screen.width >= 375) {
+      this.setState({
+        videoWidth: 348,
+        videoHeight: 242,
+        videoTop: -561,
+        videoLeft: 200,
+        buttonVideoWidth: 348,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 18.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    }
   }
 
   componentDidMount() {
@@ -60,31 +234,172 @@ class Home extends Component {
     });
   };
   videoScrollDownEvent = e => {
-    if (window.scrollY >= 400 && this.state.isClose === "block") {
+    if (window.screen.width >= 1920) {
+      if (window.scrollY >= 400 && this.state.isClose === "block") {
+        // 1920px
+        this.setState({
+          videoWidth: 479,
+          videoHeight: 267,
+          videoLeft: 1391,
+          videoTop: -56,
+          videoPosition: "fixed",
+          buttonVideoWidth: 479,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 267,
+          closeButtonDisplay: "block",
+          videoClass: "fixed",
+          isClose: "block"
+        });
+      } else if (window.scrollY < 400) {
+        this.setState({
+          videoWidth: 638,
+          videoHeight: 358,
+          videoTop: -341,
+          videoLeft: 864,
+          buttonVideoWidth: 638,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 358,
+          videoPosition: "absolute !important",
+          closeButtonDisplay: "none",
+          isClose: "block",
+          videoClass: "absolute"
+        });
+      }
+    } else if (window.screen.width >= 1366) {
+      // console.log(this.state.videoClass);
+      if (window.scrollY >= 400 && this.state.isClose === "block") {
+        // 1366px
+        // console.log(">=400")
+        this.setState({
+          videoPosition: "fixed",
+          videoWidth: 479,
+          videoHeight: 269,
+          videoLeft: 838,
+          videoTop: -366,
+          buttonVideoWidth: 479,
+          buttonVideoTop: 269,
+          // buttonVideoWidth: 479,
+          buttonVideoHeight: 60,
+          // buttonVideoTop: 267,
+          closeButtonDisplay: "block",
+          videoClass: "fixed"
+        });
+      } else if (window.scrollY < 400) {
+        // console.log("<400")
+        this.setState({
+          videoWidth: 607,
+          videoHeight: 341,
+          videoTop: -472,
+          videoLeft: 609,
+          buttonVideoWidth: 607,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 341,
+          videoPosition: "absolute !important",
+          closeButtonDisplay: "none",
+          isClose: "block",
+          videoClass: "absolute"
+        });
+      }
+    } else if (window.screen.width >= 1280) {
+      if (window.scrollY >= 400 && this.state.isClose === "block") {
+        // 1280px
+        this.setState({
+          videoPosition: "fixed",
+          videoWidth: 479,
+          videoHeight: 269,
+          videoLeft: 751,
+          videoTop: -111,
+          buttonVideoWidth: 479,
+          buttonVideoTop: 269,
+          // buttonVideoWidth: 479,
+          buttonVideoHeight: 60,
+          // buttonVideoTop: 267,
+          closeButtonDisplay: "block",
+          videoClass: "fixed"
+        });
+      } else if (window.scrollY < 400) {
+        this.setState({
+          videoWidth: 607,
+          videoHeight: 342,
+          videoTop: -498,
+          videoLeft: 568,
+          buttonVideoWidth: 607,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 341,
+          videoPosition: "absolute",
+          closeButtonDisplay: "none",
+          isClose: "block",
+          videoClass: "absolute"
+        });
+      }
+    } else if (window.screen.width >= 1024) {
       this.setState({
-        videoWidth: 479,
-        videoHeight: 267,
-        videoLeft: 836,
-        videoTop: -170,
-        videoPosition: "fixed",
-        buttonVideoWidth: 479,
-        buttonVideoHeight: 60,
-        buttonVideoTop: 267,
-        closeButtonDisplay: "block"
-      });
-    } else if (window.scrollY < 400) {
-      this.setState({
-        videoWidth: 616,
+        videoWidth: 607,
         videoHeight: 342,
-        videoLeft: 601,
-        videoTop: -276,
-        buttonVideoWidth: 616,
+        videoTop: -498,
+        videoLeft: 200,
+        buttonVideoWidth: 607,
         buttonVideoHeight: 60,
-        buttonVideoTop: 342,
-        videoPosition: "absolute !important",
+        buttonVideoTop: 341,
+        isClose: "block",
+        videoClass: "absolute",
         closeButtonDisplay: "none",
-        isClose: "block"
+        settingsIpadPro: 3,
+        width: 55.5,
+        videoPosition: "absolute"
       });
+    } else if (window.screen.width >= 768) {
+      this.setState({
+        videoWidth: 607,
+        videoHeight: 342,
+        videoTop: -498,
+        videoLeft: 200,
+        buttonVideoWidth: 607,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 341,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 3,
+        width: 41.5,
+        videoPosition: "absolute"
+      });
+    } else if(window.screen.width >= 414) {
+      //   width: 385px;
+      // height: 242px;
+        this.setState({
+          videoWidth: 385,
+          videoHeight: 242,
+          videoTop: -561,
+          videoLeft: 200,
+          buttonVideoWidth: 385,
+          buttonVideoHeight: 60,
+          buttonVideoTop: 242,
+          isClose: "block",
+          videoClass: "absolute",
+          closeButtonDisplay: "none",
+          settingsIpadPro: 1,
+          width: 18.5,
+          videoPosition: "absolute",
+          settingsSliderIpadPro: 1
+        })
+    } else if(window.screen.width >= 375) {
+      this.setState({
+        videoWidth: 348,
+        videoHeight: 242,
+        videoTop: -561,
+        videoLeft: 200,
+        buttonVideoWidth: 348,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 18.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
     }
   };
 
@@ -107,7 +422,7 @@ class Home extends Component {
     }
   };
   render() {
-    console.log(window.scrollY);
+    console.log(this.state.isClose);
     const menu = (
       <Menu>
         <Menu.Item key="0">
@@ -146,7 +461,9 @@ class Home extends Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: this.state.settingsIpadPro,
+      // slidesToShow: 4,
+      // slidesToShow: 3,
       slidesToScroll: 1,
       useCSS: true
     };
@@ -154,7 +471,7 @@ class Home extends Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: this.state.settingsSliderIpadPro,
       slidesToScroll: 4
     };
     const { Meta } = Card;
@@ -237,81 +554,92 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <ul className="nav nav-container-wrapper nav-container">
-            <li className="nav-item">
-              <a className="nav-item" href="#">
-                รายการสด&nbsp;
-                <span class="red-live" />
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <Dropdown overlay={menu} trigger={["click"]}>
-                <a className="ant-dropdown-link nav-item" href="#">
-                  รายการ <Icon type="down" />
+          <div className="nav-list-contant">
+            <ul className="nav nav-container-wrapper nav-container">
+              <li className="nav-item">
+                <a className="nav-item" href="#">
+                  รายการสด&nbsp;
+                  <span class="red-live" />
                 </a>
-              </Dropdown>
-            </li>
-            <li className="nav-item">
-              <a className="nav-item" href="#">
-                ผังรายการ
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-item" href="#">
-                ศิลปินดารา
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-item" href="#">
-                เพลง
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-item" href="#">
-                ข้าวประชาสัมพันธ์
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-item" href="#">
-                ข่าวเวิร์คพอยท์
-              </a>
-            </li>
-          </ul>
+              </li>
+              <li className="nav-item dropdown">
+                <Dropdown overlay={menu} trigger={["click"]}>
+                  <a className="ant-dropdown-link nav-item" href="#">
+                    รายการ <Icon type="down" />
+                  </a>
+                </Dropdown>
+              </li>
+              <li className="nav-item">
+                <a className="nav-item" href="#">
+                  ผังรายการ
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-item" href="#">
+                  ศิลปินดารา
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-item" href="#">
+                  เพลง
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-item" href="#">
+                  ข้าวประชาสัมพันธ์
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-item" href="#">
+                  ข่าวเวิร์คพอยท์
+                </a>
+              </li>
+            </ul>
+          </div>
         </Header>
         <Content>
           <section className="first-section-Container">
             <Carousel dots={false} autoplay className="img-slide">
               <div>
-                <img src="https://site-assets.mediaoxide.com/workpointtv/2019/06/20084046/sweet3200x1500.jpg" />
+                <img
+                  className="height-carousel"
+                  src="https://site-assets.mediaoxide.com/workpointtv/2019/06/20084046/sweet3200x1500.jpg"
+                />
               </div>
               <div>
-                <img src="https://site-assets.mediaoxide.com/workpointtv/2019/06/20084221/10f10-3200x1500.jpg" />
+                <img
+                  className="height-carousel"
+                  src="https://site-assets.mediaoxide.com/workpointtv/2019/06/20084221/10f10-3200x1500.jpg"
+                />
               </div>
               <div>
-                <img src="https://site-assets.mediaoxide.com/workpointtv/2019/06/21093518/desktop-3200x1500.jpg" />
+                <img
+                  className="height-carousel"
+                  src="https://site-assets.mediaoxide.com/workpointtv/2019/06/21093518/desktop-3200x1500.jpg"
+                />
               </div>
               <div>
-                <img src="https://site-assets.mediaoxide.com/workpointtv/2019/06/21091307/3200x15001.jpg" />
+                <img
+                  className="height-carousel"
+                  src="https://site-assets.mediaoxide.com/workpointtv/2019/06/21091307/3200x15001.jpg"
+                />
               </div>
             </Carousel>
-            <Affix
-              offsetTop="500"
-              className="ant-affix"
+            <div
+              id="affix-video"
+              className="affix-video"
               style={{
-                // position: 'absolute',
-                position: this.state.videoPosition,
-                display: this.state.isClose
+                display: this.state.isClose,
+                position: this.state.videoClass
               }}
             >
               <div
-                className="video-button-css ant-affi"
+                className="video-button-css"
                 style={{
                   width: this.state.videoWidth,
                   height: this.state.videoHeight,
                   marginTop: this.state.videoTop,
-                  marginLeft: this.state.videoLeft,
-                  position: this.state.videoPosition
-                  // position: 'absolute'
+                  marginLeft: this.state.videoLeft
                 }}
               >
                 <iframe
@@ -349,12 +677,13 @@ class Home extends Component {
                   onClick={this.closeVideo}
                 />
               </div>
-            </Affix>
+            </div>
+            {/* </Affix> */}
           </section>
           <section className="second-section-Container">
             <div className="highlight-text">
               <h1>รายการไฮท์ไลท์</h1>
-              <div>
+              <div className="highlight-video">
                 <div
                   style={{
                     width: this.state.width + "rem",
@@ -362,7 +691,7 @@ class Home extends Component {
                   }}
                 >
                   <Slider {...settings}>
-                    <div>
+                    <div className="card-slick-highlight">
                       <Card
                         className="card-slick"
                         hoverable
@@ -457,7 +786,7 @@ class Home extends Component {
             <div className="highlight-text">
               <h1>วีดีโอล่าสุด</h1>
               <Row>
-                <Col span={12}>
+                <Col className="col-last-video1" span={12}>
                   <iframe
                     class="last-video-css"
                     width="97.3%"
@@ -468,7 +797,7 @@ class Home extends Component {
                     allowfullscreen
                   />
                 </Col>
-                <Col span={12}>
+                <Col className="col-last-video2" span={12}>
                   <div>
                     <h1 className="text-last-video">
                       ไมค์หมดหนี้ EP.602 |
@@ -482,7 +811,7 @@ class Home extends Component {
             <div className="load-more-container">
               <div className="load-more-video">
                 <input type="checkbox" id="load-more" />
-                <ul>
+                <ul className="ul-video">
                   <li className="load-more-video-detail">
                     <div>
                       <img
@@ -1043,7 +1372,7 @@ class Home extends Component {
         <Footer className="footer-end">
           <div className="footer-contant-end">
             <Row>
-              <Col span={9}>
+              <Col span={9} className="footer-col">
                 <div class="logo_container">
                   <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/logo-wptv.png" />
                 </div>
@@ -1067,8 +1396,8 @@ class Home extends Component {
                   </ul>
                 </div>
               </Col>
-              <Col span={9}>
-                <div>
+              <Col span={9} className="footer-col">
+                <div className="footer-col-9">
                   <h3 className="text-footer">ติดตามเรา</h3>
                   <div className="icon-footer">
                     <Row>
@@ -1096,16 +1425,19 @@ class Home extends Component {
                           <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/appstore.png" />
                         </a>
                       </Col>
-                      <Col span="12">
+                      <Col span="12" className="col-google-play-icon">
                         <a>
-                          <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/playstore.png" />
+                          <img
+                            className="google-play-icon"
+                            src="https://www.workpointtv.com/wp-content/themes/wptv/assets/playstore.png"
+                          />
                         </a>
                       </Col>
                     </Row>
                   </div>
                 </div>
               </Col>
-              <Col span={6}>
+              <Col span={6} className="footer-col footer-col-6">
                 <div className="text-footer-third">
                   <p className="edit-text-footer-third one">ติดต่อโฆษณา</p>
                   <p className="edit-text-footer-third two">02-833-2000</p>
