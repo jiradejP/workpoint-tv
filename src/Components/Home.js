@@ -11,7 +11,6 @@ import {
   Row,
   Col,
   Drawer,
-  Affix,
   Button
 } from "antd";
 const { Header, Footer, Content } = Layout;
