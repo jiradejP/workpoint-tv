@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4dd78edfa688356490a192a22c00cc42",
+    "revision": "026fb2e0b6839f2dd1f5c86998e99b58",
     "url": "/workpoint-tv/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workpoint-tv/static/css/2.46439c26.chunk.css"
   },
   {
-    "revision": "a442616c90b12387f18b",
-    "url": "/workpoint-tv/static/css/main.4a463ed4.chunk.css"
+    "revision": "ca34eac39f568afbad45",
+    "url": "/workpoint-tv/static/css/main.9da025a2.chunk.css"
   },
   {
     "revision": "c9d77e54ba6acb1f3b21",
     "url": "/workpoint-tv/static/js/2.bf3a6aeb.chunk.js"
   },
   {
-    "revision": "a442616c90b12387f18b",
-    "url": "/workpoint-tv/static/js/main.abb2f638.chunk.js"
+    "revision": "ca34eac39f568afbad45",
+    "url": "/workpoint-tv/static/js/main.e5e99584.chunk.js"
   },
   {
     "revision": "18c4299d90d6766a03f5",
