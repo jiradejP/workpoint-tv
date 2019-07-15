@@ -157,7 +157,7 @@ class Home extends Component {
         videoClass: "absolute",
         closeButtonDisplay: "none",
         settingsIpadPro: 3,
-        width: 55.5,
+        width: 58.5,
         videoPosition: "absolute"
       });
     } else if (window.screen.width >= 768) {
@@ -176,7 +176,7 @@ class Home extends Component {
         width: 41.5,
         videoPosition: "absolute"
       });
-    } else if(window.screen.width >= 414) {
+    } else if (window.screen.width >= 414) {
     //   width: 385px;
     // height: 242px;
       this.setState({
@@ -191,7 +191,24 @@ class Home extends Component {
         videoClass: "absolute",
         closeButtonDisplay: "none",
         settingsIpadPro: 1,
-        width: 18.5,
+        width: 20.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    } else if (window.screen.width >= 411) {
+      this.setState({
+        videoWidth: 384,
+        videoHeight: 215,
+        videoTop: -498,
+        videoLeft: 200,
+        buttonVideoWidth: 384,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 215,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 20.5,
         videoPosition: "absolute",
         settingsSliderIpadPro: 1
       })
@@ -204,6 +221,40 @@ class Home extends Component {
         buttonVideoWidth: 348,
         buttonVideoHeight: 60,
         buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 18.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    } else if(window.screen.width >= 360) {
+      this.setState({
+        videoWidth: 348,
+        videoHeight: 242,
+        videoTop: -561,
+        videoLeft: 200,
+        buttonVideoWidth: 348,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 16.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    } else if(window.screen.width >= 320) {
+      this.setState({
+        videoWidth: 292,
+        videoHeight: 166,
+        videoTop: -561,
+        videoLeft: 200,
+        buttonVideoWidth: 292,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 166,
         isClose: "block",
         videoClass: "absolute",
         closeButtonDisplay: "none",
@@ -281,7 +332,8 @@ class Home extends Component {
           buttonVideoHeight: 60,
           // buttonVideoTop: 267,
           closeButtonDisplay: "block",
-          videoClass: "fixed"
+          videoClass: "fixed",
+          settingsIpadPro: 4
         });
       } else if (window.scrollY < 400) {
         // console.log("<400")
@@ -296,7 +348,8 @@ class Home extends Component {
           videoPosition: "absolute !important",
           closeButtonDisplay: "none",
           isClose: "block",
-          videoClass: "absolute"
+          videoClass: "absolute",
+          settingsIpadPro: 4
         });
       }
     } else if (window.screen.width >= 1280) {
@@ -344,7 +397,7 @@ class Home extends Component {
         videoClass: "absolute",
         closeButtonDisplay: "none",
         settingsIpadPro: 3,
-        width: 55.5,
+        width: 58.5,
         videoPosition: "absolute"
       });
     } else if (window.screen.width >= 768) {
@@ -364,24 +417,22 @@ class Home extends Component {
         videoPosition: "absolute"
       });
     } else if(window.screen.width >= 414) {
-      //   width: 385px;
-      // height: 242px;
-        this.setState({
-          videoWidth: 385,
-          videoHeight: 242,
-          videoTop: -561,
-          videoLeft: 200,
-          buttonVideoWidth: 385,
-          buttonVideoHeight: 60,
-          buttonVideoTop: 242,
-          isClose: "block",
-          videoClass: "absolute",
-          closeButtonDisplay: "none",
-          settingsIpadPro: 1,
-          width: 18.5,
-          videoPosition: "absolute",
-          settingsSliderIpadPro: 1
-        })
+      this.setState({
+        videoWidth: 384,
+        videoHeight: 215,
+        videoTop: -498,
+        videoLeft: 200,
+        buttonVideoWidth: 384,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 215,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 20.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
     } else if(window.screen.width >= 375) {
       this.setState({
         videoWidth: 348,
@@ -391,6 +442,40 @@ class Home extends Component {
         buttonVideoWidth: 348,
         buttonVideoHeight: 60,
         buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 18.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    } else if(window.screen.width >= 360) {
+      this.setState({
+        videoWidth: 348,
+        videoHeight: 242,
+        videoTop: -561,
+        videoLeft: 200,
+        buttonVideoWidth: 348,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 242,
+        isClose: "block",
+        videoClass: "absolute",
+        closeButtonDisplay: "none",
+        settingsIpadPro: 1,
+        width: 16.5,
+        videoPosition: "absolute",
+        settingsSliderIpadPro: 1
+      })
+    } else if(window.screen.width >= 320) {
+      this.setState({
+        videoWidth: 292,
+        videoHeight: 166,
+        videoTop: -561,
+        videoLeft: 200,
+        buttonVideoWidth: 292,
+        buttonVideoHeight: 60,
+        buttonVideoTop: 166,
         isClose: "block",
         videoClass: "absolute",
         closeButtonDisplay: "none",
@@ -683,7 +768,7 @@ class Home extends Component {
             <div className="highlight-text">
               <h1>รายการไฮท์ไลท์</h1>
               <div className="highlight-video">
-                <div
+                <div className="highlight-video-2"
                   style={{
                     width: this.state.width + "rem",
                     display: this.state.display ? "block" : "none"
@@ -1419,7 +1504,7 @@ class Home extends Component {
                   <h3 className="text-footer">ดาวน์โหลดแอพพลิเคชัน</h3>
                   <div className="download-application">
                     <Row>
-                      <Col span="8">
+                      <Col span="12">
                         <a>
                           <img src="https://www.workpointtv.com/wp-content/themes/wptv/assets/appstore.png" />
                         </a>
